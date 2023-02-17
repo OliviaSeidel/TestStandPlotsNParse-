@@ -59,7 +59,7 @@ class Plot:
         plt.savefig("AllChannels.png")
         plt.show()
 
-    def plotManyHistograms(self):
+    def plotManyHistograms(self, xLabel, yLabel):
         import matplotlib as plt
 
         fig, ax = plt.subplots(4, 4)
@@ -70,6 +70,16 @@ class Plot:
             print(f"ch{i+1} have n pass: {len(filt)}")
             ax[row, col].hist(filt)
             ax[row, col].set_title('Ch:' + str(i+1), font='6')
-            ax[row, col].set(xlabel='Seconds', ylabel='# of Events')
+            if xLabel is "":
+                if yLabel is "":
+                    ax[row, col].set('Seconds','# of Events')
+                else:
+                    ax[row, col].set(xlabel = 'Seconds', ylabel = yLabel)
+            else:
+                if yLabel is "":
+                    ax[row, col].set(xlabel = xLabel, yLabel = '# of Events')
+                else:
+                    ax[row, col].set(xlabel = xLabel, ylabel = yLabel)
+
         fig.tight_layout()
         fig.savefig('binnedDeltaTsPerChannel')
