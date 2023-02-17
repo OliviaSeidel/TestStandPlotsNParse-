@@ -38,7 +38,7 @@ class Plot:
 
         plt.show()
 
-    def plotDots(self, totTime, currentCh, plotTitle, xLabel, yLabel):
+    def plotDots(totTime, currentCh, plotTitle, xLabel, yLabel):
         import matplotlib.pyplot as plt
         import matplotlib
         import colorsys
